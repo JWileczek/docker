@@ -105,6 +105,7 @@ services:
     restart: always
     ports: [ "9200:9200", "9300:9300" ]
     volumes:
+      - "./elasticsearch.yml:/usr/share/elasticsearch/config/elasticsearch.yml:ro"
       - "${DATA_DIR}/elasticsearch:/usr/share/elasticsearch/data"
     ulimits:
       memlock:
@@ -114,12 +115,11 @@ services:
         soft: 65536
         hard: 65536
     cap_add: [ "IPC_LOCK" ]
-  fuzzy-tester:
-    image: pelias/fuzzy-tester:master
-    container_name: pelias_fuzzy_tester
+  acceptance-tests:
+    container_name: pelias_acceptance_tests
+    build: ../../images/acceptance-tests
     user: "${DOCKER_USER}"
     restart: "no"
     command: "--help"
     volumes:
       - "./pelias.json:/code/pelias.json"
-      - "./test_cases:/code/pelias/fuzzy-tester/test_cases"
