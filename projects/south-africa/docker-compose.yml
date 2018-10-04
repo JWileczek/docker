@@ -129,6 +129,5 @@ services:
     build: ../../images/acceptance-tests
     user: "${DOCKER_USER}"
     restart: "no"
-    command: "--help"
     volumes:
       - "./pelias.json:/code/pelias.json"
