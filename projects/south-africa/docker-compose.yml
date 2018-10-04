@@ -4,7 +4,8 @@ networks:
     driver: bridge
 services:
   libpostal:
-    image: pelias/libpostal-service
+    #image: pelias/libpostal-service
+    build: ../../images/libpostal
     container_name: pelias_libpostal
     user: "${DOCKER_USER}"
     restart: always
@@ -18,7 +19,8 @@ services:
       - "./synonyms/custom_name.txt:/code/pelias/schema/synonyms/custom_name.txt"
       - "./synonyms/custom_street.txt:/code/pelias/schema/synonyms/custom_street.txt"
   api:
-    image: pelias/api:master
+    #image: pelias/api:master
+    build: ../../images/api
     container_name: pelias_api
     user: "${DOCKER_USER}"
     restart: always
@@ -37,7 +39,8 @@ services:
       - "./pelias.json:/code/pelias.json"
       - "${DATA_DIR}:/data"
   whosonfirst:
-    image: pelias/whosonfirst:master
+    #image: pelias/whosonfirst:master
+    build: ../../images/whosonfirst
     container_name: pelias_whosonfirst
     user: "${DOCKER_USER}"
     volumes:
@@ -130,3 +133,16 @@ services:
     restart: "no"
     volumes:
       - "./pelias.json:/code/pelias.json"
+  mgrs:
+    build: ../../images/mgrs
+    container_name: geotrans_mgrs
+    ports: [ "3000:3000" ]
+    networks: [ "pelias" ]
+  gndb:
+    depends_on: [ "libpostal_baseimage", "whosonfirst" ]
+    build: ../../images/gndb
+    container_name: venicegeo_gndb
+    networks: [ "pelias" ]
+    volumes:
+      - "./pelias.json:/code/pelias.json"
+      - "${DATA_DIR}:/data"
