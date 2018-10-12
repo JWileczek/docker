@@ -100,3 +100,10 @@ services:
     cap_add: [ "IPC_LOCK" ]
     security_opt:
       - seccomp=unconfined
+  valhalla:
+    container_name: pelias_valhalla
+    build: ../../images/valhalla
+    restart: "no"
+    volumes:
+      - "./pelias.json:/code/pelias.json"
+      - "${DATA_DIR}:/data"
