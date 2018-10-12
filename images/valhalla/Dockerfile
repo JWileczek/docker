@@ -52,8 +52,8 @@ RUN mkdir -p /data/valhalla/valhalla_tiles
 RUN valhalla_build_config \
   --mjolnir-tile-dir '/data/valhalla/valhalla_tiles' \
   --mjolnir-tile-extract '/data/valhalla/valhalla_tiles.tar' \
-  --mjolnir-timezone '/data/valhalla/timezones.sqlite' \
-  --mjolnir-admin '/data/valhalla/admins.sqlite' > valhalla.json
+  --mjolnir-timezone '/data/valhalla/valhalla_tiles/timezones.sqlite' \
+  --mjolnir-admin '/data/valhalla/valhalla_tiles/admins.sqlite' > valhalla.json
 
 # build script to build tiles and export polyline data.
-RUN echo 'valhalla_build_tiles -c valhalla.json /data/openstreetmap/*.osm.pbf; valhalla_export_edges --config valhalla.json > /data/polylines/road_network.polylines;' > ./docker_build.sh
+RUN echo 'valhalla_build_tiles -c valhalla.json /data/openstreetmap/*.osm.pbf; valhalla_export_edges --config valhalla.json > /data/polylines/extract.0sv;' > ./docker_build.sh
