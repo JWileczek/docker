@@ -47,7 +47,11 @@
     },
     "geonames": {
       "datapath": "/data/geonames",
-      "countryCode": "ALL"
+      "countryCode": "OR"
+    },
+    "geographicnames": {
+      "datapath": "/data/gndb",
+      "countryCode": "OR"
     },
     "openstreetmap": {
       "download": [
@@ -82,7 +86,9 @@
       "importPlace": [
         "85688513",
         "85688623"
-      ]
+      ],
+      "polygons": true,
+      "simplifyPolygons": false
     },
     "transit": {
       "datapath": "/data/transit",

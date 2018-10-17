@@ -106,6 +106,7 @@ services:
     image: pelias/elasticsearch:5.6.12
     container_name: pelias_elasticsearch
     restart: always
+    environment: [ "ES_JAVA_OPTS=-Xms4g -Xmx8g" ]
     ports: [ "9200:9200", "9300:9300" ]
     volumes:
       - "${DATA_DIR}/elasticsearch:/usr/share/elasticsearch/data"
@@ -137,12 +138,10 @@ services:
     build: ../../images/mgrs
     container_name: geotrans_mgrs
     ports: [ "3000:3000" ]
-    networks: [ "pelias" ]
   gndb:
-    depends_on: [ "libpostal_baseimage", "whosonfirst" ]
+    depends_on: [ "libpostal", "whosonfirst" ]
     build: ../../images/gndb
     container_name: venicegeo_gndb
-    networks: [ "pelias" ]
     volumes:
       - "./pelias.json:/code/pelias.json"
       - "${DATA_DIR}:/data"

@@ -69,7 +69,9 @@
     "whosonfirst": {
       "datapath": "/data/whosonfirst",
       "importVenues": true,
-      "importPostalcodes": true
+      "importPostalcodes": true,
+      "polygons": true,
+      "simplifyPolygons": false
     },
     "interpolation": {
       "download": {

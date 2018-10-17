@@ -70,7 +70,9 @@
       "importPostalcodes": true,
       "importPlace": [
         "85633813"
-      ]
+      ],
+      "polygons": true,
+      "simplifyPolygons": false
     },
     "transit": {
       "datapath": "/data/transit",

@@ -82,7 +82,7 @@ services:
     image: pelias/elasticsearch:5.6.12
     container_name: pelias_elasticsearch
     restart: always
-    environment: [ "ES_JAVA_OPTS=-Xmx8g" ]
+    environment: [ "ES_JAVA_OPTS=-Xms8g -Xmx16g" ]
     ports: [ "9200:9200", "9300:9300" ]
     volumes:
       - "${DATA_DIR}/elasticsearch:/usr/share/elasticsearch/data"
