@@ -4,14 +4,15 @@ networks:
     driver: bridge
 services:
   libpostal:
-    #image: pelias/libpostal-service
-    build: ../../images/libpostal
+    image: pelias/libpostal-service
+    #build: ../../images/libpostal
     container_name: pelias_libpostal
     user: "${DOCKER_USER}"
     restart: always
     ports: [ "4400:4400" ]
   schema:
-    image: pelias/schema:support_both_es2_and_es5_plus_portland_synonyms
+    #image: pelias/schema:support_both_es2_and_es5_plus_portland_synonyms
+    build: ../../images/schema
     container_name: pelias_schema
     user: "${DOCKER_USER}"
     volumes:
@@ -19,8 +20,8 @@ services:
       - "./synonyms/custom_name.txt:/code/pelias/schema/synonyms/custom_name.txt"
       - "./synonyms/custom_street.txt:/code/pelias/schema/synonyms/custom_street.txt"
   api:
-    #image: pelias/api:master
-    build: ../../images/api
+    image: pelias/api:master
+    #build: ../../images/api
     container_name: pelias_api
     user: "${DOCKER_USER}"
     restart: always
