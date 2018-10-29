@@ -24,7 +24,7 @@ function import_all(){
   import_osm
   import_polylines
   import_transit
-  import_gndb
+  #import_gndb
 }
 
 register 'import' 'all' '(re)import all data' import_all
