@@ -18,6 +18,11 @@
       }
     }
   },
+  "dbclient": {
+    "batchSize": 500,
+    "maxActiveRequests": 10,
+    "resumeRequestCount": 2
+  },
   "acceptance-tests": {
     "endpoints": {
       "docker": "http://api:4000/v1/"
@@ -72,7 +77,8 @@
         "102086957"
       ],
       "polygons": true,
-      "simplifyPolygons": false
+      "simplifyPolygons": false,
+      "simplifcationRate": 0.0003
     },
     "transit": {
       "datapath": "/data/transit",

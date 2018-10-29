@@ -18,6 +18,14 @@
       }
     }
   },
+  "schema": {
+    "indexName": "pelias"
+  },
+  "dbclient": {
+    "batchSize": 500,
+    "maxActiveRequests": 10,
+    "resumeRequestCount": 2
+  },
   "acceptance-tests": {
     "endpoints": {
       "docker": "http://api:4000/v1/"
@@ -88,7 +96,8 @@
         "85688623"
       ],
       "polygons": true,
-      "simplifyPolygons": false
+      "simplifyPolygons": true,
+      "simplifcationRate": 0.0003
     },
     "transit": {
       "datapath": "/data/transit",

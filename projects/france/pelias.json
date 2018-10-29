@@ -18,6 +18,11 @@
       }
     }
   },
+  "dbclient": {
+    "batchSize": 300,
+    "maxActiveRequests": 10,
+    "resumeRequestCount": 2
+  },
   "acceptance-tests": {
     "endpoints": {
       "docker": "http://api:4000/v1/"
@@ -68,7 +73,8 @@
       "importPostalcodes": true,
       "importPlace": [ "136253037" ],
       "polygons": true,
-      "simplifyPolygons": false
+      "simplifyPolygons": false,
+      "simplifcationRate": 0.0003
     }
   }
 }
